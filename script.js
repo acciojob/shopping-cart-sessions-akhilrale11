@@ -7,7 +7,7 @@ const products = [
   { id: 5, name: "Product 5", price: 50 },
 ];
 
-// DOM Selectors
+// DOM Elements
 const productList = document.getElementById("product-list");
 const cartList = document.getElementById("cart-list");
 const clearCartBtn = document.getElementById("clear-cart-btn");
@@ -17,11 +17,11 @@ let cart = JSON.parse(sessionStorage.getItem("shoppingCart")) || [];
 
 // Render the products list
 function renderProducts() {
-  productList.innerHTML = "";
+  productList.innerHTML = ""; // Clear previous content
   products.forEach((product) => {
     const listItem = document.createElement("li");
     listItem.innerHTML = `
-      ${product.name} - $${product.price} 
+      ${product.name} - $${product.price}
       <button onclick="addToCart(${product.id})">Add to Cart</button>
     `;
     productList.appendChild(listItem);
@@ -30,7 +30,7 @@ function renderProducts() {
 
 // Render the shopping cart
 function renderCart() {
-  cartList.innerHTML = "";
+  cartList.innerHTML = ""; // Clear previous content
   if (cart.length === 0) {
     cartList.innerHTML = "<li>Your cart is empty.</li>";
     return;
@@ -59,9 +59,9 @@ function clearCart() {
   renderCart();
 }
 
-// Event Listener for clearing the cart
+// Event Listeners
 clearCartBtn.addEventListener("click", clearCart);
 
-// Initial render
+// Initial Render
 renderProducts();
 renderCart();
